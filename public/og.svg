@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7F1E8"/>
+      <stop offset="0.55" stop-color="#EFE4D3"/>
+      <stop offset="1" stop-color="#F4DCE2"/>
+    </linearGradient>
+    <linearGradient id="yarn" x1="720" y1="150" x2="1060" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7A1F3D"/>
+      <stop offset="0.5" stop-color="#B24A66"/>
+      <stop offset="1" stop-color="#3A2350"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <ellipse cx="900" cy="520" rx="230" ry="28" fill="#1A1613" opacity="0.1"/>
+  <path d="M690 240C660 320 670 420 720 470C770 520 860 535 930 515C1010 492 1060 430 1060 360C1060 285 1010 215 930 190C850 165 720 175 690 240Z" fill="url(#yarn)"/>
+  <g opacity="0.35" stroke="#FFFDF8" stroke-width="2" fill="none">
+    <path d="M670 280C780 240 940 240 1080 290"/>
+    <path d="M665 330C785 290 945 292 1085 340"/>
+    <path d="M668 380C790 345 948 348 1080 392"/>
+    <path d="M700 430C810 400 940 408 1050 445"/>
+  </g>
+  <text x="80" y="250" font-family="Georgia, serif" font-size="86" fill="#1A1613">TheYarnHook</text>
+  <text x="84" y="310" font-family="Georgia, serif" font-style="italic" font-size="34" fill="#7A1F3D">Yarn, but make it a feeling.</text>
+  <text x="84" y="370" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#4A423B">Desire · Milka · Souffle · Plush Luxe</text>
+  <rect x="84" y="420" width="180" height="2" fill="#A16207"/>
+  <text x="84" y="470" font-family="Helvetica, Arial, sans-serif" font-size="18" letter-spacing="2" fill="#6B6157">SMALL-BATCH YARN, DYED IN INDIA</text>
+</svg>
