@@ -12,6 +12,7 @@ import { Drawer } from "@/components/ui/drawer";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
+import { cartEmptyPlaceholder } from "@/lib/commerce/placeholder";
 import { FilterPanel } from "./filter-panel";
 import { ProductGrid } from "./product-grid";
 
@@ -187,9 +188,9 @@ export function ShopView({ initialQuery = "", initialFilters = {}, initialSort =
             <ProductGrid products={results} />
           ) : (
             <div className="flex flex-col items-center justify-center rounded-lg border border-dashed border-line bg-paper/60 px-6 py-16 text-center sm:py-20">
-              <div className="h-28 w-28 opacity-80 rounded-full overflow-hidden border border-line bg-paper">
+              <div className="relative h-28 w-28 opacity-80 rounded-full overflow-hidden border border-line bg-paper">
                 <Image
-                  src="https://placehold.co/400x400/7A1F3D/FFFFFF?text=Desire+Yarn"
+                  src={cartEmptyPlaceholder}
                   alt=""
                   fill
                   className="object-cover"

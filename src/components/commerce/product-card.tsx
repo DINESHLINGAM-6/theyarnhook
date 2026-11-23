@@ -12,6 +12,7 @@ import { useWishlistStore } from "@/lib/store/wishlist";
 import { useUIStore } from "@/lib/store/ui";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import { productPlaceholders } from "@/lib/commerce/placeholder";
 import { ColourSwatches } from "./colour-swatches";
 import { RatingStars } from "./rating-stars";
 import { Price } from "./price";
@@ -73,7 +74,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
 
         <Link href={`/products/${product.slug}`} className="block focus-visible:outline-none">
           <Image
-            src={product.image ?? `https://placehold.co/800x800/7A1F3D/FFFFFF?text=Desire+Yarn`}
+            src={product.image ?? productPlaceholders[product.collectionId as keyof typeof productPlaceholders] ?? productPlaceholders.desire}
             alt={`${product.name} in ${active.name}`}
             fill
             sizes="(max-width: 768px) 33vw, (max-width: 1200px) 25vw, 200px"

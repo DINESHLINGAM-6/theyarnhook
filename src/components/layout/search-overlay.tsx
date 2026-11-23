@@ -10,6 +10,7 @@ import { ArrowRight, Search, X } from "lucide-react";
 import { collections, products } from "@/lib/commerce/data";
 import { getCollectionById } from "@/lib/commerce/provider";
 import { formatINR } from "@/lib/commerce/format";
+import { productPlaceholders } from "@/lib/commerce/placeholder";
 import { useDialog } from "@/lib/hooks/use-dialog";
 import { useMounted } from "@/lib/hooks/use-mounted";
 import { useUIStore } from "@/lib/store/ui";
@@ -179,7 +180,7 @@ export function SearchOverlay() {
                                     className="relative h-12 w-10 shrink-0 overflow-hidden rounded-md border border-line"
                                   >
                                     <Image
-                                      src={product.image ?? `https://placehold.co/200x200/7A1F3D/FFFFFF?text=Desire+Yarn`}
+                                      src={product.image ?? productPlaceholders.desire}
                                       alt=""
                                       fill
                                       className="object-cover object-center"

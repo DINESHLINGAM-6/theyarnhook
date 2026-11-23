@@ -3,12 +3,12 @@ import Image from "next/image";
 import { collections } from "@/lib/commerce/data";
 
 const TILES: { palette: string[]; image: string }[] = [
-  { palette: collections[0].palette, image: "https://placehold.co/600x600/7A1F3D/FFFFFF?text=Desire+Yarn" },
-  { palette: collections[1].palette, image: "https://placehold.co/600x600/6B4A2C/FFFFFF?text=Milka+Yarn" },
-  { palette: collections[2].palette, image: "https://placehold.co/600x600/F2C879/3A2350?text=Souffle+Yarn" },
-  { palette: collections[3].palette, image: "https://placehold.co/600x600/3A2350/FFFFFF?text=Plush+Luxe+Yarn" },
-  { palette: ["#B98A5E", "#E7D8BF", "#6B4A2C"], image: "https://placehold.co/600x600/B98A5E/3A2350?text=Milka+Yarn" },
-  { palette: ["#F2C879", "#E8A87C", "#D98A5A"], image: "https://placehold.co/600x600/F2C879/3A2350?text=Souffle+Yarn" },
+  { palette: collections[0].palette, image: "/images/products/yarn-starlite.webp" },
+  { palette: collections[1].palette, image: "/images/products/yarn-caramel.webp" },
+  { palette: collections[2].palette, image: "/images/products/yarn-mousse-yellow.webp" },
+  { palette: collections[3].palette, image: "/images/products/yarn-plush.webp" },
+  { palette: ["#B98A5E", "#E7D8BF", "#6B4A2C"], image: "/images/products/yarn-cotton-plus.webp" },
+  { palette: ["#F2C879", "#E8A87C", "#D98A5A"], image: "/images/products/yarn-v-peach.webp" },
 ];
 
 export function InstagramGrid() {

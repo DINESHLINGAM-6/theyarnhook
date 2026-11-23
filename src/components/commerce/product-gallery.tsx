@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import type { Colour, MediaKind, Product } from "@/lib/commerce/types";
+import { productPlaceholders } from "@/lib/commerce/placeholder";
 import { cn } from "@/lib/utils";
 
 const VIEWS: { kind: MediaKind; label: string }[] = [
@@ -19,7 +20,10 @@ interface ProductGalleryProps {
 
 export function ProductGallery({ product, colour, className }: ProductGalleryProps) {
   const [view, setView] = useState<MediaKind>("skein");
-  const mainImage = product.image ?? `https://placehold.co/800x800/7A1F3D/FFFFFF?text=Desire+Yarn`;
+  const mainImage =
+    product.image ??
+    productPlaceholders[product.collectionId as keyof typeof productPlaceholders] ??
+    productPlaceholders.desire;
 
   return (
     <div className={cn("flex flex-col gap-3", className)}>

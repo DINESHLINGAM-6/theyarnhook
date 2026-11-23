@@ -14,7 +14,7 @@ export default function NotFound() {
         <div
           className="h-full w-full"
           style={{
-            backgroundImage: "url('https://placehold.co/400x400/7A1F3D/FFFFFF?text=Desire+Yarn')",
+            backgroundImage: "url('/images/products/yarn-starlite.webp')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

@@ -5,6 +5,7 @@ import { getFeaturedCollection, getProductsByCollection } from "@/lib/commerce/p
 import { formatINR } from "@/lib/commerce/format";
 import { ButtonLink } from "@/components/ui/button-link";
 import { CollectionMark } from "@/components/art/collection-mark";
+import { productPlaceholders } from "@/lib/commerce/placeholder";
 
 export function CollectionSpotlight() {
   const collection = getFeaturedCollection();
@@ -55,7 +56,7 @@ export function CollectionSpotlight() {
               >
                 <div className="relative aspect-square overflow-hidden rounded-md bg-plush-tint">
                   <Image
-                    src={product.image ?? `https://placehold.co/400x400/3A2350/FFFFFF?text=Plush+Luxe+Yarn`}
+                    src={product.image ?? productPlaceholders["plush-luxe"]}
                     alt=""
                     fill
                     className="object-cover object-center transition-transform duration-500 group-hover:scale-105"

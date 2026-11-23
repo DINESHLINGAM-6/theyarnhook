@@ -10,6 +10,7 @@ import { formatINR } from "@/lib/commerce/format";
 import { useMounted } from "@/lib/hooks/use-mounted";
 import { ButtonLink } from "@/components/ui/button-link";
 import { QuantityStepper } from "@/components/commerce/quantity-stepper";
+import { cartEmptyPlaceholder, productPlaceholders } from "@/lib/commerce/placeholder";
 
 const SHIPPING_FLAT = 79;
 
@@ -37,9 +38,9 @@ export default function CartPage() {
   if (lines.length === 0) {
     return (
       <section className="container-x flex min-h-[60svh] flex-col items-center justify-center py-20 text-center">
-        <div className="h-32 w-32 opacity-80 rounded-full overflow-hidden border border-line bg-paper">
+        <div className="relative h-32 w-32 opacity-80 rounded-full overflow-hidden border border-line bg-paper">
           <Image
-            src="https://placehold.co/400x400/7A1F3D/FFFFFF?text=Desire+Yarn"
+            src={cartEmptyPlaceholder}
             alt=""
             fill
             className="object-cover"
@@ -97,7 +98,7 @@ export default function CartPage() {
                     aria-label={product.name}
                   >
                     <Image
-                      src={product.image ?? `https://placehold.co/400x400/7A1F3D/FFFFFF?text=Desire+Yarn`}
+                      src={product.image ?? productPlaceholders.desire}
                       alt=""
                       fill
                       className="object-cover object-center"

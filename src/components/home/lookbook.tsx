@@ -9,6 +9,7 @@ const LOOKBOOK = [
     title: "Throws that hug back",
     blurb: "Chunky merino and alpaca blankets for winter evenings.",
     href: "/shop?project=blankets",
+    image: "/images/products/yarn-arm-knit.webp",
     colour: "#F4DCE2",
   },
   {
@@ -16,6 +17,7 @@ const LOOKBOOK = [
     title: "Drape for every day",
     blurb: "Silk-merino blends that move with you, not against you.",
     href: "/shop?project=garments",
+    image: "/images/products/lifestyle-knit.jpg",
     colour: "#F3E7D6",
   },
   {
@@ -23,6 +25,7 @@ const LOOKBOOK = [
     title: "Small makes, big joy",
     blurb: "Fine cotton for amigurumi, booties and first toys.",
     href: "/shop?project=amigurumi",
+    image: "/images/products/yarn-mousse-peach.webp",
     colour: "#FBE3CC",
   },
   {
@@ -30,6 +33,7 @@ const LOOKBOOK = [
     title: "Soft things for the home",
     blurb: "Cushions, baskets and throws in midnight and brass.",
     href: "/shop?project=home",
+    image: "/images/products/yarn-blankie.webp",
     colour: "#E7DEF0",
   },
 ];
@@ -64,8 +68,8 @@ export function Lookbook() {
             <article key={item.id} className="group lookbook-frame life-card relative overflow-hidden rounded-xl">
               <div className="relative aspect-[4/5] w-full overflow-hidden">
                 <Image
-                  src={lookbookPlaceholders[item.id]}
-                  alt=""
+                  src={item.image ?? lookbookPlaceholders[item.id]}
+                  alt={item.title}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   className="object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"

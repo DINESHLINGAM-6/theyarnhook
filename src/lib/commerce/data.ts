@@ -48,7 +48,7 @@ export const collections: Collection[] = [
     id: "desire",
     slug: "desire",
     name: "Desire",
-    image: collectionPlaceholders.desire,
+    image: "/images/products/yarn-starlite.webp",
     tagline: "Desire what you make.",
     description:
       "Wine-dark merino and silk-blend yarns for pieces that feel like an evening out. Deep rose, velvet plum and a little candlelight.",
@@ -62,7 +62,7 @@ export const collections: Collection[] = [
     id: "milka",
     slug: "milka",
     name: "Milka",
-    image: collectionPlaceholders.milka,
+    image: "/images/products/yarn-caramel.webp",
     tagline: "Slow mornings, soft stitches.",
     description:
       "Milk-tea neutrals and café-warm blends for the projects you reach for on a slow Sunday. Oat, caramel and cardamom cream.",
@@ -76,7 +76,7 @@ export const collections: Collection[] = [
     id: "souffle",
     slug: "souffle",
     name: "Souffle",
-    image: collectionPlaceholders.souffle,
+    image: "/images/products/yarn-mousse-yellow.webp",
     tagline: "Light as a whisk.",
     description:
       "Airy, puffed yarns in butter, peach and apricot. Made for soft blankets, quick gifts and colour that lifts a room.",
@@ -90,7 +90,7 @@ export const collections: Collection[] = [
     id: "plush-luxe",
     slug: "plush-luxe",
     name: "Plush Luxe",
-    image: collectionPlaceholders["plush-luxe"],
+    image: "/images/products/yarn-plush.webp",
     tagline: "Midnight, but make it soft.",
     description:
       "Midnight plum, inky merino and a thread of brass. The after-dark collection for velvet textures and heirloom pieces.",
@@ -118,6 +118,37 @@ type ProductSeed = Pick<
 > &
   Partial<Product>;
 
+const realProductImages: Record<string, string> = {
+  p01: "/images/products/yarn-starlite.webp",
+  p02: "/images/products/yarn-mousse-majenta.webp",
+  p03: "/images/products/yarn-velvet-green.webp",
+  p04: "/images/products/yarn-mousse-lavender.webp",
+  p05: "/images/products/yarn-mousse-peach.webp",
+  p06: "/images/products/yarn-plush.webp",
+  p07: "/images/products/yarn-starlite.webp",
+  p08: "/images/products/yarn-caramel.webp",
+  p09: "/images/products/yarn-cotton-plus.webp",
+  p10: "/images/products/yarn-kids-cotton.webp",
+  p11: "/images/products/yarn-mercerized.webp",
+  p12: "/images/products/yarn-mimi.webp",
+  p13: "/images/products/yarn-kiddos.webp",
+  p14: "/images/products/yarn-caramel.webp",
+  p15: "/images/products/yarn-mousse-yellow.webp",
+  p16: "/images/products/yarn-v-peach.webp",
+  p17: "/images/products/yarn-mousse-sky.webp",
+  p18: "/images/products/yarn-mousse-yellow.webp",
+  p19: "/images/products/yarn-mousse-peach.webp",
+  p20: "/images/products/yarn-mousse-yellow.webp",
+  p21: "/images/products/yarn-mousse-green.webp",
+  p22: "/images/products/yarn-plush.webp",
+  p23: "/images/products/yarn-mousse-peacock.webp",
+  p24: "/images/products/yarn-arm-knit.webp",
+  p25: "/images/products/yarn-blankie.webp",
+  p26: "/images/products/yarn-plush.webp",
+  p27: "/images/products/yarn-mousse-lavender.webp",
+  p28: "/images/products/yarn-arm-knit.webp",
+};
+
 function makeProduct(seed: ProductSeed): Product {
   const palette = seed.colours.map((colour) => colour.hex);
   const media: Media[] = seed.media ?? [
@@ -144,13 +175,15 @@ function makeProduct(seed: ProductSeed): Product {
     stock: 24,
     projects: [],
     image:
-      seed.collectionId === "desire"
+      seed.image ??
+      realProductImages[seed.id] ??
+      (seed.collectionId === "desire"
         ? productPlaceholders.desire
         : seed.collectionId === "milka"
           ? productPlaceholders.milka
           : seed.collectionId === "souffle"
             ? productPlaceholders.souffle
-            : productPlaceholders["plush-luxe"],
+            : productPlaceholders["plush-luxe"]),
     ...seed,
     weightLabel: weightMeta[seed.weight].label,
     media,

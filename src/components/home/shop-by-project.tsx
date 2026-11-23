@@ -13,12 +13,12 @@ const PROJECT_TINTS: Record<string, string> = {
 };
 
 const PROJECT_IMAGES: Record<string, string> = {
-  amigurumi: "https://placehold.co/600x600/7A1F3D/FFFFFF?text=Desire+Yarn",
-  garments: "https://placehold.co/600x600/6B4A2C/FFFFFF?text=Milka+Yarn",
-  blankets: "https://placehold.co/600x600/F2C879/3A2350?text=Souffle+Yarn",
-  socks: "https://placehold.co/600x600/3A2350/FFFFFF?text=Plush+Luxe+Yarn",
-  bags: "https://placehold.co/600x600/B98A5E/3A2350?text=Milka+Yarn",
-  home: "https://placehold.co/600x600/F2C879/3A2350?text=Souffle+Yarn",
+  amigurumi: "/images/products/yarn-mousse-peach.webp",
+  garments: "/images/products/lifestyle-knit.jpg",
+  blankets: "/images/products/yarn-arm-knit.webp",
+  socks: "/images/products/yarn-mousse-majenta.webp",
+  bags: "/images/products/yarn-cotton-plus.webp",
+  home: "/images/products/yarn-blankie.webp",
 };
 
 const ICONS = {

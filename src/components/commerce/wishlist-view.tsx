@@ -8,6 +8,7 @@ import { useWishlistStore } from "@/lib/store/wishlist";
 import { useMounted } from "@/lib/hooks/use-mounted";
 import { ButtonLink } from "@/components/ui/button-link";
 import { ProductGrid } from "@/components/commerce/product-grid";
+import { cartEmptyPlaceholder } from "@/lib/commerce/placeholder";
 
 export function WishlistView() {
   const mounted = useMounted();
@@ -28,9 +29,9 @@ export function WishlistView() {
   if (items.length === 0) {
     return (
       <section className="container-x flex min-h-[60svh] flex-col items-center justify-center py-20 text-center">
-        <div className="h-32 w-32 opacity-80 rounded-full overflow-hidden border border-line bg-paper">
+        <div className="relative h-32 w-32 opacity-80 rounded-full overflow-hidden border border-line bg-paper">
           <Image
-            src="https://placehold.co/400x400/7A1F3D/FFFFFF?text=Desire+Yarn"
+            src={cartEmptyPlaceholder}
             alt=""
             fill
             className="object-cover"

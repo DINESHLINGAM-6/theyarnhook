@@ -12,6 +12,7 @@ import { useMounted } from "@/lib/hooks/use-mounted";
 import { Button } from "@/components/ui/button";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Input } from "@/components/ui/input";
+import { cartEmptyPlaceholder, productPlaceholders } from "@/lib/commerce/placeholder";
 
 const SHIPPING_FLAT = 79;
 
@@ -67,9 +68,9 @@ export default function CheckoutPage() {
   if (lines.length === 0) {
     return (
       <section className="container-x flex min-h-[60svh] flex-col items-center justify-center py-20 text-center">
-        <div className="h-28 w-28 opacity-80 rounded-full overflow-hidden border border-line bg-paper">
+        <div className="relative h-28 w-28 opacity-80 rounded-full overflow-hidden border border-line bg-paper">
           <Image
-            src="https://placehold.co/400x400/7A1F3D/FFFFFF?text=Desire+Yarn"
+            src={cartEmptyPlaceholder}
             alt=""
             fill
             className="object-cover"
@@ -200,7 +201,7 @@ export default function CheckoutPage() {
                   <li key={`${line.productId}-${line.colourId}`} className="flex items-center gap-3">
                     <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-md border border-line bg-oat/30">
                       <Image
-                        src={product.image ?? `https://placehold.co/200x200/7A1F3D/FFFFFF?text=Desire+Yarn`}
+                        src={product.image ?? productPlaceholders.desire}
                         alt=""
                         fill
                         className="object-cover object-center"
