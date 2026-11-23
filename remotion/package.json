@@ -1,0 +1,14 @@
+{
+  "name": "theyarnhook-remotion",
+  "version": "1.0.0",
+  "description": "Motion graphics for TheYarnHook built with Remotion",
+  "scripts": {
+    "start": "remotion studio",
+    "build": "remotion render Root out/video.mp4"
+  },
+  "dependencies": {
+    "remotion": "^4.0.545",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}

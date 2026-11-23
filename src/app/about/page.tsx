@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { collections } from "@/lib/commerce/data";
 import { ButtonLink } from "@/components/ui/button-link";
 import { CollectionMark } from "@/components/art/collection-mark";
+import { HFLogoReveal } from "@/components/motion/hyperframes/hf-logo-reveal";
 
 export const metadata: Metadata = {
   title: "Our story",
@@ -182,6 +183,9 @@ export default function AboutPage() {
       </section>
 
       <section className="container-x pb-16 sm:pb-24">
+        <div className="mb-12 rounded-2xl border border-line/60 bg-oat/20 py-8 backdrop-blur-sm">
+          <HFLogoReveal />
+        </div>
         <div className="flex flex-col items-center rounded-lg border border-line bg-paper px-6 py-12 text-center">
           <p className="kicker">Come say hello</p>
           <h2 className="display mt-2 max-w-xl text-4xl sm:text-5xl">There's always room for one more project.</h2>

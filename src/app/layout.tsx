@@ -13,15 +13,13 @@ import { Grain } from "@/components/art/grain";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  axes: ["opsz"],
   variable: "--font-display",
   display: "swap",
 });
 
 const manrope = Manrope({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
   display: "swap",
 });

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Check, ShoppingBag, Trash2, Truck } from "lucide-react";
+import { cartEmptyPlaceholder, productPlaceholders } from "@/lib/commerce/placeholder";
 import { getProductById } from "@/lib/commerce/provider";
 import { formatINR } from "@/lib/commerce/format";
 import { FREE_SHIPPING_THRESHOLD } from "@/lib/commerce/data";
@@ -71,9 +72,9 @@ export function CartDrawer() {
     >
       {lines.length === 0 ? (
         <div className="flex h-full flex-col items-center justify-center px-6 py-16 text-center">
-          <div className="h-32 w-32 opacity-80 rounded-full overflow-hidden border border-line bg-paper">
+          <div className="relative h-32 w-32 opacity-80 rounded-full overflow-hidden border border-line bg-paper">
             <Image
-              src="https://placehold.co/400x400/7A1F3D/FFFFFF?text=Desire+Yarn"
+              src={cartEmptyPlaceholder}
               alt=""
               fill
               className="object-cover"
@@ -103,7 +104,7 @@ export function CartDrawer() {
                   className="relative h-24 w-20 shrink-0 overflow-hidden rounded-md border border-line"
                 >
                   <Image
-                    src={product.image ?? `https://placehold.co/400x400/7A1F3D/FFFFFF?text=Desire+Yarn`}
+                    src={product.image ?? productPlaceholders[product.collectionId as keyof typeof productPlaceholders] ?? productPlaceholders.desire}
                     alt=""
                     fill
                     className="object-cover object-center"

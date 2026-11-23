@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRef, useState } from "react";
 import { ArrowRight, ChevronDown, Heart, Menu, Search, ShoppingBag } from "lucide-react";
 import { collections, projects, weights } from "@/lib/commerce/data";
 import { getCollectionCount } from "@/lib/commerce/provider";
@@ -35,6 +36,12 @@ export function SiteHeader() {
   const wishlistIds = useWishlistStore((state) => state.ids);
   const count = mounted ? cartCount(lines) : 0;
   const wishes = mounted ? wishlistIds.length : 0;
+  const [megaOpen, setMegaOpen] = useState(false);
+  const megaRef = useRef<HTMLDivElement>(null);
+
+  const handleMegaKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Escape") setMegaOpen(false);
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-line/70 bg-paper/85 backdrop-blur-md">
@@ -49,17 +56,29 @@ export function SiteHeader() {
             Shop
           </Link>
 
-          <div className="group relative">
-            <Link
-              href="/collections"
-              className={cn(navLink, "inline-flex items-center gap-1")}
+          <div className="group relative" onKeyDown={handleMegaKeyDown}>
+            <button
+              type="button"
+              id="mega-menu-trigger"
               aria-haspopup="true"
+              aria-expanded={megaOpen}
+              aria-controls="mega-menu"
+              onClick={() => setMegaOpen((v) => !v)}
+              className={cn(navLink, "inline-flex items-center gap-1 cursor-pointer")}
             >
               Collections
-              <ChevronDown size={13} aria-hidden className="transition-transform duration-300 group-hover:rotate-180" />
-            </Link>
+              <ChevronDown size={13} aria-hidden className={cn("transition-transform duration-300", megaOpen && "rotate-180")} />
+            </button>
 
-            <div className="invisible absolute left-1/2 top-full z-50 w-[min(92vw,880px)] -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 ease-smooth group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+            <div
+              id="mega-menu"
+              ref={megaRef}
+              className={cn(
+                "invisible absolute left-1/2 top-full z-50 w-[min(92vw,880px)] -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 ease-smooth",
+                "group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100",
+                megaOpen && "!visible !opacity-100"
+              )}
+            >
               <div className="overflow-hidden rounded-xl border border-line bg-paper shadow-lift">
                 <div className="grid gap-6 p-5 lg:grid-cols-[1.35fr_1fr]">
                   <div>

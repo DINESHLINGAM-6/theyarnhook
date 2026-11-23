@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button-link";
@@ -11,13 +10,14 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <section className="container-x flex min-h-[70svh] flex-col items-center justify-center py-20 text-center">
-      <div className="relative mb-8 h-40 w-40 opacity-90 rounded-full overflow-hidden border border-line bg-paper">
-        <Image
-          src="https://placehold.co/400x400/7A1F3D/FFFFFF?text=Desire+Yarn"
-          alt=""
-          fill
-          className="object-cover"
-          loading="lazy"
+      <div className="relative mb-8 h-40 w-40 opacity-90 rounded-full overflow-hidden border border-line bg-desire-solid/10">
+        <div
+          className="h-full w-full"
+          style={{
+            backgroundImage: "url('https://placehold.co/400x400/7A1F3D/FFFFFF?text=Desire+Yarn')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
         />
       </div>
       <p className="kicker">404</p>

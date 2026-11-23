@@ -93,6 +93,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
         <h3 className="font-sans text-[0.925rem] font-semibold leading-snug text-ink line-clamp-1">
           {product.name}
         </h3>
+        <RatingStars rating={product.rating} count={product.reviewCount} size={11} />
         <div className="flex items-center justify-between gap-2 pt-0.5">
           <Price price={product.price} compareAt={product.compareAtPrice} size="sm" />
           {low ? (

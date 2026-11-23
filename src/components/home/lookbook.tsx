@@ -1,37 +1,35 @@
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { lookbookPlaceholders } from "@/lib/commerce/placeholder";
 
 const LOOKBOOK = [
   {
-    id: "throws",
+    id: "throws" as const,
     title: "Throws that hug back",
     blurb: "Chunky merino and alpaca blankets for winter evenings.",
     href: "/shop?project=blankets",
-    image: "https://placehold.co/1200x1500/F2C879/3A2350?text=Throws+Yarn",
     colour: "#F4DCE2",
   },
   {
-    id: "garments",
+    id: "garments" as const,
     title: "Drape for every day",
     blurb: "Silk-merino blends that move with you, not against you.",
     href: "/shop?project=garments",
-    image: "https://placehold.co/1200x1500/6B4A2C/FFFFFF?text=Milka+Yarn",
     colour: "#F3E7D6",
   },
   {
-    id: "amigurumi",
+    id: "amigurumi" as const,
     title: "Small makes, big joy",
     blurb: "Fine cotton for amigurumi, booties and first toys.",
     href: "/shop?project=amigurumi",
-    image: "https://placehold.co/1200x1500/7A1F3D/FFFFFF?text=Desire+Yarn",
     colour: "#FBE3CC",
   },
   {
-    id: "home",
+    id: "home" as const,
     title: "Soft things for the home",
     blurb: "Cushions, baskets and throws in midnight and brass.",
     href: "/shop?project=home",
-    image: "https://placehold.co/1200x1500/3A2350/FFFFFF?text=Plush+Luxe+Yarn",
     colour: "#E7DEF0",
   },
 ];
@@ -63,8 +61,17 @@ export function Lookbook() {
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {LOOKBOOK.map((item) => (
-            <article key={item.id} className="group lookbook-frame life-card">
-              <img src={item.image} alt="" loading="lazy" decoding="async" />
+            <article key={item.id} className="group lookbook-frame life-card relative overflow-hidden rounded-xl">
+              <div className="relative aspect-[4/5] w-full overflow-hidden">
+                <Image
+                  src={lookbookPlaceholders[item.id]}
+                  alt=""
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="object-cover transition-transform duration-700 ease-smooth group-hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
               <span
                 className="life-badge"
                 style={{ backgroundColor: item.colour, color: item.colour === "#E7DEF0" ? "#3A2350" : "#1a1613" }}

@@ -15,7 +15,7 @@ export function Newsletter() {
           <div className="blob w-[500px] h-[500px] bg-success/25 rounded-full -top-[120px] left-[-100px] mix-blend-screen" />
           <div className="blob w-[380px] h-[380px] bg-brass/20 rounded-full bottom-[-80px] right-[-60px] mix-blend-screen" />
         </div>
-        <div className="relative z-10 max-w-2xl mx-auto text-center">
+        <div className="relative z-10 max-w-2xl mx-auto text-center" role="status" aria-live="polite">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-success/40 bg-success/10 text-success-ink text-[10px] font-semibold tracking-wide mx-auto mb-4">
             <Mail size={14} className="text-success-solid" aria-hidden />
             You’re on the list

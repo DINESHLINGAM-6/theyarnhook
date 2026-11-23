@@ -11,6 +11,7 @@ import type {
   WeightCategory,
   WeightMeta,
 } from "./types";
+import { collectionPlaceholders, productPlaceholders } from "./placeholder";
 
 export const FREE_SHIPPING_THRESHOLD = 999;
 
@@ -47,7 +48,7 @@ export const collections: Collection[] = [
     id: "desire",
     slug: "desire",
     name: "Desire",
-    image: "https://placehold.co/1200x1200/7A1F3D/FFFFFF?text=Desire+Collection",
+    image: collectionPlaceholders.desire,
     tagline: "Desire what you make.",
     description:
       "Wine-dark merino and silk-blend yarns for pieces that feel like an evening out. Deep rose, velvet plum and a little candlelight.",
@@ -61,7 +62,7 @@ export const collections: Collection[] = [
     id: "milka",
     slug: "milka",
     name: "Milka",
-    image: "https://placehold.co/1200x1200/6B4A2C/FFFFFF?text=Milka+Collection",
+    image: collectionPlaceholders.milka,
     tagline: "Slow mornings, soft stitches.",
     description:
       "Milk-tea neutrals and café-warm blends for the projects you reach for on a slow Sunday. Oat, caramel and cardamom cream.",
@@ -75,7 +76,7 @@ export const collections: Collection[] = [
     id: "souffle",
     slug: "souffle",
     name: "Souffle",
-    image: "https://placehold.co/1200x1200/F2C879/3A2350?text=Souffle+Collection",
+    image: collectionPlaceholders.souffle,
     tagline: "Light as a whisk.",
     description:
       "Airy, puffed yarns in butter, peach and apricot. Made for soft blankets, quick gifts and colour that lifts a room.",
@@ -89,7 +90,7 @@ export const collections: Collection[] = [
     id: "plush-luxe",
     slug: "plush-luxe",
     name: "Plush Luxe",
-    image: "https://placehold.co/1200x1200/3A2350/FFFFFF?text=Plush+Luxe+Collection",
+    image: collectionPlaceholders["plush-luxe"],
     tagline: "Midnight, but make it soft.",
     description:
       "Midnight plum, inky merino and a thread of brass. The after-dark collection for velvet textures and heirloom pieces.",
@@ -144,12 +145,12 @@ function makeProduct(seed: ProductSeed): Product {
     projects: [],
     image:
       seed.collectionId === "desire"
-        ? "https://placehold.co/800x800/7A1F3D/FFFFFF?text=Desire+Yarn"
+        ? productPlaceholders.desire
         : seed.collectionId === "milka"
-          ? "https://placehold.co/800x800/6B4A2C/FFFFFF?text=Milka+Yarn"
+          ? productPlaceholders.milka
           : seed.collectionId === "souffle"
-            ? "https://placehold.co/800x800/F2C879/3A2350?text=Souffle+Yarn"
-            : "https://placehold.co/800x800/3A2350/FFFFFF?text=Plush+Luxe+Yarn",
+            ? productPlaceholders.souffle
+            : productPlaceholders["plush-luxe"],
     ...seed,
     weightLabel: weightMeta[seed.weight].label,
     media,

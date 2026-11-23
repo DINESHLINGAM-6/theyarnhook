@@ -72,7 +72,7 @@ export function CollectionHero({ collection, count }: CollectionHeroProps) {
               <Reveal delay={520} once={!reduce}>
                 <Magnetic>
                   <ButtonLink
-                    href="/shop"
+                    href={`/shop?collection=${collection.id}`}
                     size="lg"
                     style={{ backgroundColor: collection.accent.solid, color: collection.accent.on }}
                   >
@@ -95,20 +95,30 @@ export function CollectionHero({ collection, count }: CollectionHeroProps) {
               <div className="relative mx-auto aspect-square w-full max-w-[460px] sm:max-w-[520px]">
                 <div className="absolute inset-0 rounded-full border border-current/10 animate-[pulse_4s_ease-in-out_infinite]" />
                 <div className="absolute inset-[6%] rotate-3 transition-transform duration-1000 ease-in-out">
-                  {collection.image ? (
-                    <Image
-                      src={collection.image}
-                      alt=""
-                      fill
-                      className="object-cover object-center rounded-full transition-transform duration-1000 hover:rotate-3"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <div className="h-full w-full rounded-full" />
-                  )}
+                  <div className="relative h-full w-full overflow-hidden rounded-full shadow-2xl">
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      poster={`/media/${collection.id}-hero-poster.svg`}
+                      className="h-full w-full object-cover transition-transform duration-1000 hover:scale-105"
+                      aria-label={`${collection.name} collection ambient motion loop`}
+                    >
+                      <source src={`/media/${collection.id}-hero.mp4`} type="video/mp4" />
+                      {/* Fallback image when video isn't loaded or supported */}
+                      <Image
+                        src={`/media/${collection.id}-hero-poster.svg`}
+                        alt={`${collection.name} yarn mood visual`}
+                        fill
+                        className="object-cover object-center"
+                        loading="lazy"
+                      />
+                    </video>
+                  </div>
                 </div>
-                <div className="absolute -right-6 bottom-6 hidden sm:block rounded-full border border-current/20 bg-current/5 p-8 shadow-lift">
-                  <p className="text-[10px] uppercase tracking-widest text-current/60">
+                <div className="absolute -right-6 bottom-6 hidden sm:block rounded-full border border-current/20 bg-paper/80 backdrop-blur-md p-6 shadow-lift">
+                  <p className="text-[10px] uppercase tracking-widest text-current font-bold">
                     {collection.symbol}
                   </p>
                 </div>
