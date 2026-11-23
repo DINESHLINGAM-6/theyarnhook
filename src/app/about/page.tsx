@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { collections } from "@/lib/commerce/data";
 import { ButtonLink } from "@/components/ui/button-link";
-import { YarnSkein } from "@/components/art/yarn-skein";
 import { CollectionMark } from "@/components/art/collection-mark";
 
 export const metadata: Metadata = {
@@ -46,13 +46,39 @@ export default function AboutPage() {
 
         <div className="relative mx-auto aspect-[4/5] w-full max-w-[420px]">
           <div className="absolute left-0 top-[6%] h-[68%] w-[58%] -rotate-6 overflow-hidden rounded-[18px] border border-line bg-paper p-4 shadow-lift">
-            <YarnSkein palette={collections[0].palette} uid="about-desire" />
+            {collections[0].image && (
+              <Image
+                src={collections[0].image}
+                alt=""
+                fill
+                className="object-cover object-center rounded-[18px]"
+                loading="lazy"
+              />
+            )}
           </div>
           <div className="absolute right-0 top-0 h-[58%] w-[54%] rotate-3 overflow-hidden rounded-[18px] border border-line bg-paper p-4 shadow-soft">
-            <YarnSkein palette={collections[1].palette} uid="about-milka" kind="ball" />
+            {collections[1].image && (
+              <Image
+                src={collections[1].image}
+                alt=""
+                fill
+                className="object-cover object-center rounded-[18px]"
+                loading="lazy"
+                style={{ transform: "rotate(3deg)" }}
+              />
+            )}
           </div>
           <div className="absolute bottom-0 right-[6%] h-[54%] w-[52%] rotate-6 overflow-hidden rounded-[18px] border border-line bg-paper p-4 shadow-lift">
-            <YarnSkein palette={collections[3].palette} uid="about-plush" />
+            {collections[3].image && (
+              <Image
+                src={collections[3].image}
+                alt=""
+                fill
+                className="object-cover object-center rounded-[18px]"
+                loading="lazy"
+                style={{ transform: "rotate(-6deg)" }}
+              />
+            )}
           </div>
         </div>
       </section>

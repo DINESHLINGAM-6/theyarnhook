@@ -1,14 +1,33 @@
 import Link from "next/link";
-import { ArrowRight, BedDouble, Footprints, House, Rabbit, Shirt, ShoppingBag } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import { projects } from "@/lib/commerce/data";
 
+const PROJECT_TINTS: Record<string, string> = {
+  amigurumi: "#F4DCE2",
+  garments: "#F3E7D6",
+  blankets: "#FBE3CC",
+  socks: "#E7DEF0",
+  bags: "#F3E7D6",
+  home: "#E7DEF0",
+};
+
+const PROJECT_IMAGES: Record<string, string> = {
+  amigurumi: "https://placehold.co/600x600/7A1F3D/FFFFFF?text=Desire+Yarn",
+  garments: "https://placehold.co/600x600/6B4A2C/FFFFFF?text=Milka+Yarn",
+  blankets: "https://placehold.co/600x600/F2C879/3A2350?text=Souffle+Yarn",
+  socks: "https://placehold.co/600x600/3A2350/FFFFFF?text=Plush+Luxe+Yarn",
+  bags: "https://placehold.co/600x600/B98A5E/3A2350?text=Milka+Yarn",
+  home: "https://placehold.co/600x600/F2C879/3A2350?text=Souffle+Yarn",
+};
+
 const ICONS = {
-  amigurumi: Rabbit,
-  garments: Shirt,
-  blankets: BedDouble,
-  socks: Footprints,
-  bags: ShoppingBag,
-  home: House,
+  amigurumi: "🧸",
+  garments: "👕",
+  blankets: "🛋️",
+  socks: "🧦",
+  bags: "👜",
+  home: "🏠",
 } as const;
 
 export function ShopByProject() {
@@ -20,29 +39,43 @@ export function ShopByProject() {
           <h2 id="project-heading" className="display mt-2 text-4xl sm:text-5xl">
             Shop by project.
           </h2>
+          <p className="mt-3 max-w-lg text-sm leading-relaxed text-ink-soft">
+            Choose what you want to make — we’ll show you the yarns that suit it best.
+          </p>
         </div>
-        <Link href="/shop" className="inline-flex items-center gap-1.5 text-sm text-ink-soft transition-colors hover:text-ink">
+        <Link href="/shop" className="inline-flex items-center gap-1.5 text-sm text-ink-soft transition-all duration-300 hover:text-ink hover:-translate-x-0.5">
           Browse everything
           <ArrowRight size={15} aria-hidden />
         </Link>
       </div>
 
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => {
-          const Icon = ICONS[project.id];
+          const tint = PROJECT_TINTS[project.id] ?? "#efe4d3";
+          const image = PROJECT_IMAGES[project.id];
           return (
             <Link
               key={project.id}
               href={`/shop?project=${project.id}`}
-              className="group flex items-center gap-4 rounded-lg border border-line bg-paper p-5 transition-all duration-300 ease-smooth hover:-translate-y-0.5 hover:border-ink/20 hover:shadow-soft"
+              className="group relative flex flex-col justify-between rounded-xl border border-line bg-paper p-5 transition-all duration-400 ease-smooth hover:-translate-y-1 hover:border-current/40 hover:shadow-card sm:p-6"
             >
-              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-oat/70 text-ink transition-colors group-hover:bg-ink group-hover:text-ivory">
-                <Icon size={20} strokeWidth={1.5} aria-hidden />
-              </span>
-              <span className="min-w-0 flex-1">
+              <div className="relative mb-4 aspect-square overflow-hidden rounded-2xl border border-line/60 bg-[var(--ink-soft)]/5">
+                <Image
+                  src={image}
+                  alt=""
+                  fill
+                  className="object-cover transition-transform duration-500 ease-smooth group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-[var(--ink-soft)]/20 via-transparent to-transparent" />
+                <span className="absolute left-2 top-2 z-10 flex h-6 items-center gap-1 rounded-full bg-paper/90 px-2 py-0.5 text-[10px] font-bold text-ink backdrop-blur ring-1 ring-current/10">
+                  {ICONS[project.id]}
+                </span>
+              </div>
+              <div className="min-w-0 flex-1">
                 <span className="block font-display text-xl leading-tight text-ink">{project.name}</span>
                 <span className="mt-0.5 block text-xs leading-relaxed text-muted">{project.blurb}</span>
-              </span>
+              </div>
               <ArrowRight size={16} aria-hidden className="shrink-0 text-muted transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-ink" />
             </Link>
           );

@@ -1,17 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Check, ShoppingBag, Trash2, Truck } from "lucide-react";
 import { getProductById } from "@/lib/commerce/provider";
 import { formatINR } from "@/lib/commerce/format";
 import { FREE_SHIPPING_THRESHOLD } from "@/lib/commerce/data";
-import { shade } from "@/lib/color";
 import { cartCount, cartSubtotal, freeShippingRemaining, useCartStore } from "@/lib/store/cart";
 import { useUIStore } from "@/lib/store/ui";
 import { Drawer } from "@/components/ui/drawer";
 import { ButtonLink } from "@/components/ui/button-link";
 import { QuantityStepper } from "@/components/commerce/quantity-stepper";
-import { YarnSkein } from "@/components/art/yarn-skein";
 
 export function CartDrawer() {
   const overlay = useUIStore((state) => state.overlay);
@@ -72,8 +71,14 @@ export function CartDrawer() {
     >
       {lines.length === 0 ? (
         <div className="flex h-full flex-col items-center justify-center px-6 py-16 text-center">
-          <div className="h-32 w-32 opacity-80">
-            <YarnSkein palette={["#D9C3A5", "#B98A5E", "#6B4A2C"]} uid="empty-cart" />
+          <div className="h-32 w-32 opacity-80 rounded-full overflow-hidden border border-line bg-paper">
+            <Image
+              src="https://placehold.co/400x400/7A1F3D/FFFFFF?text=Desire+Yarn"
+              alt=""
+              fill
+              className="object-cover"
+              loading="lazy"
+            />
           </div>
           <h3 className="mt-4 font-display text-2xl">Your bag is still soft and empty.</h3>
           <p className="mt-2 max-w-xs text-sm leading-relaxed text-muted">
@@ -90,18 +95,20 @@ export function CartDrawer() {
             const product = getProductById(line.productId);
             if (!product) return null;
             const colour = product.colours.find((item) => item.id === line.colourId) ?? product.colours[0];
-            const palette = [shade(colour.hex, 0.12), colour.hex, shade(colour.hex, -0.22)];
             return (
               <li key={`${line.productId}-${line.colourId}`} className="flex gap-3 py-4">
                 <Link
                   href={`/products/${product.slug}`}
                   onClick={close}
                   className="relative h-24 w-20 shrink-0 overflow-hidden rounded-md border border-line"
-                  style={{ background: `linear-gradient(150deg, ${shade(colour.hex, 0.9)}, #FFFDF8)` }}
                 >
-                  <div className="absolute inset-0 p-1.5">
-                    <YarnSkein palette={palette} uid={`cart-${product.id}-${colour.id}`} />
-                  </div>
+                  <Image
+                    src={product.image ?? `https://placehold.co/400x400/7A1F3D/FFFFFF?text=Desire+Yarn`}
+                    alt=""
+                    fill
+                    className="object-cover object-center"
+                    loading="lazy"
+                  />
                 </Link>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-start justify-between gap-2">

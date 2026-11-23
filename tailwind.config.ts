@@ -13,7 +13,7 @@ const config: Config = {
         line: "var(--line)",
         brass: "var(--brass)",
         sale: "var(--sale)",
-        success: "var(--success)",
+        success: { DEFAULT: "var(--success)", solid: "#2f6b4f", tint: "#E3F0EA", ink: "#1E4533", on: "#F2F9F4" },
         desire: { solid: "#7A1F3D", tint: "#F4DCE2", ink: "#4A1024", on: "#FFF6F8" },
         milka: { solid: "#6B4A2C", tint: "#F3E7D6", ink: "#3A2716", on: "#FFFBF4" },
         souffle: { solid: "#9A4A16", tint: "#FBE3CC", ink: "#5A2A0C", on: "#FFF8F0" },
@@ -54,6 +54,9 @@ const config: Config = {
       },
       maxWidth: { container: "80rem", wide: "90rem" },
       screens: { xs: "400px" },
+      backgroundImage: {
+        "gradient-desire": "linear-gradient(135deg, #7A1F3D, #B98A5E)",
+      },
     },
   },
   plugins: [],

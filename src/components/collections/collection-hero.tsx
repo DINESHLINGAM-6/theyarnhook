@@ -1,13 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useReducedMotion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import type { Collection } from "@/lib/commerce/types";
 import { Reveal } from "@/components/motion/reveal";
 import { Parallax } from "@/components/motion/parallax";
 import { Magnetic } from "@/components/motion/magnetic";
-import { YarnSkein } from "@/components/art/yarn-skein";
 import { CollectionMark } from "@/components/art/collection-mark";
 import { ButtonLink } from "@/components/ui/button-link";
 import { cn } from "@/lib/utils";
@@ -95,11 +95,17 @@ export function CollectionHero({ collection, count }: CollectionHeroProps) {
               <div className="relative mx-auto aspect-square w-full max-w-[460px] sm:max-w-[520px]">
                 <div className="absolute inset-0 rounded-full border border-current/10 animate-[pulse_4s_ease-in-out_infinite]" />
                 <div className="absolute inset-[6%] rotate-3 transition-transform duration-1000 ease-in-out">
-                  <YarnSkein
-                    palette={collection.palette}
-                    uid={`collection-hero-${collection.id}`}
-                    className="transition-transform duration-1000 hover:rotate-3"
-                  />
+                  {collection.image ? (
+                    <Image
+                      src={collection.image}
+                      alt=""
+                      fill
+                      className="object-cover object-center rounded-full transition-transform duration-1000 hover:rotate-3"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="h-full w-full rounded-full" />
+                  )}
                 </div>
                 <div className="absolute -right-6 bottom-6 hidden sm:block rounded-full border border-current/20 bg-current/5 p-8 shadow-lift">
                   <p className="text-[10px] uppercase tracking-widest text-current/60">

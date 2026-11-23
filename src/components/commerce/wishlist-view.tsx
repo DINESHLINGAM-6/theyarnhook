@@ -1,13 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Heart, Trash2 } from "lucide-react";
 import { products } from "@/lib/commerce/data";
 import { useWishlistStore } from "@/lib/store/wishlist";
 import { useMounted } from "@/lib/hooks/use-mounted";
 import { ButtonLink } from "@/components/ui/button-link";
 import { ProductGrid } from "@/components/commerce/product-grid";
-import { YarnSkein } from "@/components/art/yarn-skein";
 
 export function WishlistView() {
   const mounted = useMounted();
@@ -28,8 +28,14 @@ export function WishlistView() {
   if (items.length === 0) {
     return (
       <section className="container-x flex min-h-[60svh] flex-col items-center justify-center py-20 text-center">
-        <div className="h-32 w-32 opacity-80">
-          <YarnSkein palette={["#E8C9CF", "#B24A66", "#7A1F3D"]} uid="empty-wishlist" kind="ball" />
+        <div className="h-32 w-32 opacity-80 rounded-full overflow-hidden border border-line bg-paper">
+          <Image
+            src="https://placehold.co/400x400/7A1F3D/FFFFFF?text=Desire+Yarn"
+            alt=""
+            fill
+            className="object-cover"
+            loading="lazy"
+          />
         </div>
         <p className="kicker mt-6">Wishlist</p>
         <h1 className="display mt-2 text-4xl sm:text-5xl">Nothing saved yet.</h1>

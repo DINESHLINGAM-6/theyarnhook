@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
@@ -9,11 +10,9 @@ import { ArrowRight, Search, X } from "lucide-react";
 import { collections, products } from "@/lib/commerce/data";
 import { getCollectionById } from "@/lib/commerce/provider";
 import { formatINR } from "@/lib/commerce/format";
-import { shade } from "@/lib/color";
 import { useDialog } from "@/lib/hooks/use-dialog";
 import { useMounted } from "@/lib/hooks/use-mounted";
 import { useUIStore } from "@/lib/store/ui";
-import { YarnSkein } from "@/components/art/yarn-skein";
 
 const POPULAR = ["Merino", "Cotton", "Blanket", "Plush Luxe", "Sale"];
 
@@ -178,11 +177,14 @@ export function SearchOverlay() {
                                 >
                                   <span
                                     className="relative h-12 w-10 shrink-0 overflow-hidden rounded-md border border-line"
-                                    style={{ background: `linear-gradient(150deg, ${shade(colour.hex, 0.9)}, #FFFDF8)` }}
                                   >
-                                    <span className="absolute inset-0 p-1">
-                                      <YarnSkein palette={[shade(colour.hex, 0.12), colour.hex, shade(colour.hex, -0.22)]} uid={`search-${product.id}`} />
-                                    </span>
+                                    <Image
+                                      src={product.image ?? `https://placehold.co/200x200/7A1F3D/FFFFFF?text=Desire+Yarn`}
+                                      alt=""
+                                      fill
+                                      className="object-cover object-center"
+                                      loading="lazy"
+                                    />
                                   </span>
                                   <span className="min-w-0 flex-1">
                                     <span className="block text-sm font-medium text-ink">{product.name}</span>

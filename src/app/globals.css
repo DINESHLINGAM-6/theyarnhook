@@ -146,6 +146,277 @@
   .no-scroll {
     overflow: hidden;
   }
+
+  /* ---------- Rich utilities ---------- */
+  .glow {
+    position: relative;
+    isolation: isolate;
+  }
+  .glow::after {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    z-index: -1;
+    background: inherit;
+    filter: blur(48px) saturate(1.4);
+    opacity: 0.45;
+    transition: opacity 0.6s ease, transform 0.8s ease;
+  }
+  .group:hover .glow::after,
+  .glow:focus-within::after {
+    opacity: 0.55;
+    transform: scale(1.05);
+  }
+  .glow-brass::after { background: var(--brass); }
+  .glow-desire::after { background: var(--desire-solid); }
+  .glow-plush::after { background: var(--plush-solid); }
+  .glow-milka::after { background: var(--milka-solid); }
+
+  .gradient-text {
+    background: linear-gradient(135deg, var(--ink), var(--muted));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .gradient-brass {
+    background: linear-gradient(135deg, var(--brass), #c98f2e);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .border-gradient {
+    position: relative;
+    border: 0;
+    border-radius: inherit;
+  }
+  .border-gradient::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, var(--brass), #d9a443, var(--ink-soft));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .border-gradient > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .glass-card {
+    background: color-mix(in srgb, var(--paper) 78%, transparent);
+    border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  }
+
+  .reveal-clip {
+    position: relative;
+    overflow: hidden;
+  }
+  .reveal-clip > * {
+    display: block;
+  }
+
+  .blob {
+    position: absolute;
+    z-index: -1;
+    filter: blur(64px) saturate(1.3);
+    opacity: 0.35;
+    border-radius: 50%;
+  }
+
+  .mask-radial {
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 70%, transparent 100%);
+    mask-image: radial-gradient(circle at 50% 50%, #000 70%, transparent 100%);
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Richer focus rings */
+  .focus-ring-rich {
+    @apply focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brass focus-visible:ring-offset-paper rounded-md;
+  }
+
+  /* Scroll timeline hint */
+  .reveal-fade {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal-fade.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .tilt-card {
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+  }
+
+  /* ---------- Lookbook / lifestyle ---------- */
+  .lookbook-frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+  }
+  .lookbook-frame img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .lookbook-frame:hover img {
+    transform: scale(1.05);
+  }
+  .lookbook-caption {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(26,22,19,0.55), transparent 40%);
+    color: var(--paper);
+  }
+  .lookbook-caption .kicker {
+    color: color-mix(in srgb, var(--brass) 70%, transparent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+  .lookbook-caption h3 {
+    color: var(--paper);
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    margin: 0.25rem 0 0;
+    letter-spacing: -0.02em;
+  }
+
+  /* Trust / certification row */
+  .trust-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--paper);
+  }
+  .trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid color-mix(in srgb, var(--ink) 15%, transparent);
+    border-radius: 999px;
+    background: rgba(255,253,248,0.6);
+    backdrop-filter: blur(8px);
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    transition: all 0.3s ease;
+  }
+  .trust-item:hover {
+    border-color: var(--brass);
+    color: var(--brass);
+    transform: translateY(-1px);
+  }
+  .trust-item svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  /* Scroll narrative hint */
+  .scroll-nudge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .scroll-nudge svg {
+    width: 14px;
+    height: 14px;
+    color: var(--brass);
+    animation: scrollBounce 2s ease-in-out infinite;
+  }
+  @keyframes scrollBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(4px); }
+  }
+
+  /* Lifestyle image card */
+  .life-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    background: var(--ivory);
+    aspect-ratio: 4 / 5;
+  }
+  .life-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+  }
+  .life-card:hover img {
+    transform: scale(1.04);
+  }
+  .life-badge {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(255,253,248,0.85);
+    border: 1px solid var(--line);
+    backdrop-filter: blur(6px);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--ink);
+    box-shadow: var(--soft);
+  }
+
+  /* Certification badge */
+  .cert-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--paper);
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    transition: all 0.3s ease;
+  }
+  .cert-badge:hover {
+    border-color: var(--success);
+    color: var(--success);
+  }
 }
 
 @layer utilities {

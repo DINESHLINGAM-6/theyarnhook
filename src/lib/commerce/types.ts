@@ -27,6 +27,8 @@ export interface Product {
   id: string;
   slug: string;
   name: string;
+  image?: string;
+  brandImage?: string;
   collectionId: CollectionId;
   price: number;
   compareAtPrice?: number;
@@ -62,6 +64,7 @@ export interface Collection {
   id: CollectionId;
   slug: string;
   name: string;
+  image?: string;
   tagline: string;
   description: string;
   accent: CollectionAccent;

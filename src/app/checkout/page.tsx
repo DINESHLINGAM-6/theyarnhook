@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Check, Lock } from "lucide-react";
@@ -11,7 +12,6 @@ import { useMounted } from "@/lib/hooks/use-mounted";
 import { Button } from "@/components/ui/button";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Input } from "@/components/ui/input";
-import { YarnSkein } from "@/components/art/yarn-skein";
 
 const SHIPPING_FLAT = 79;
 
@@ -67,8 +67,14 @@ export default function CheckoutPage() {
   if (lines.length === 0) {
     return (
       <section className="container-x flex min-h-[60svh] flex-col items-center justify-center py-20 text-center">
-        <div className="h-28 w-28 opacity-80">
-          <YarnSkein palette={["#D9C3A5", "#B98A5E", "#6B4A2C"]} uid="empty-checkout" kind="ball" />
+        <div className="h-28 w-28 opacity-80 rounded-full overflow-hidden border border-line bg-paper">
+          <Image
+            src="https://placehold.co/400x400/7A1F3D/FFFFFF?text=Desire+Yarn"
+            alt=""
+            fill
+            className="object-cover"
+            loading="lazy"
+          />
         </div>
         <h1 className="display mt-5 text-4xl">There's nothing to check out.</h1>
         <p className="mt-3 max-w-sm text-sm text-ink-soft">Add a yarn to the bag first, then come back.</p>
@@ -193,7 +199,13 @@ export default function CheckoutPage() {
                 return (
                   <li key={`${line.productId}-${line.colourId}`} className="flex items-center gap-3">
                     <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-md border border-line bg-oat/30">
-                      <YarnSkein palette={product.media[0].palette} uid={`checkout-${product.id}-${line.colourId}`} />
+                      <Image
+                        src={product.image ?? `https://placehold.co/200x200/7A1F3D/FFFFFF?text=Desire+Yarn`}
+                        alt=""
+                        fill
+                        className="object-cover object-center"
+                        loading="lazy"
+                      />
                     </span>
                     <span className="min-w-0 flex-1 text-xs">
                       <span className="block truncate font-medium text-ink">{product.name}</span>

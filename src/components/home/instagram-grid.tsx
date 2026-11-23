@@ -1,15 +1,14 @@
 import { Instagram } from "lucide-react";
+import Image from "next/image";
 import { collections } from "@/lib/commerce/data";
-import { YarnSkein } from "@/components/art/yarn-skein";
-import type { MediaKind } from "@/lib/commerce/types";
 
-const TILES: { palette: string[]; kind: MediaKind }[] = [
-  { palette: collections[0].palette, kind: "skein" },
-  { palette: collections[1].palette, kind: "ball" },
-  { palette: collections[2].palette, kind: "texture" },
-  { palette: collections[3].palette, kind: "skein" },
-  { palette: ["#B98A5E", "#E7D8BF", "#6B4A2C"], kind: "texture" },
-  { palette: ["#F2C879", "#E8A87C", "#D98A5A"], kind: "ball" },
+const TILES: { palette: string[]; image: string }[] = [
+  { palette: collections[0].palette, image: "https://placehold.co/600x600/7A1F3D/FFFFFF?text=Desire+Yarn" },
+  { palette: collections[1].palette, image: "https://placehold.co/600x600/6B4A2C/FFFFFF?text=Milka+Yarn" },
+  { palette: collections[2].palette, image: "https://placehold.co/600x600/F2C879/3A2350?text=Souffle+Yarn" },
+  { palette: collections[3].palette, image: "https://placehold.co/600x600/3A2350/FFFFFF?text=Plush+Luxe+Yarn" },
+  { palette: ["#B98A5E", "#E7D8BF", "#6B4A2C"], image: "https://placehold.co/600x600/B98A5E/3A2350?text=Milka+Yarn" },
+  { palette: ["#F2C879", "#E8A87C", "#D98A5A"], image: "https://placehold.co/600x600/F2C879/3A2350?text=Souffle+Yarn" },
 ];
 
 export function InstagramGrid() {
@@ -45,11 +44,14 @@ export function InstagramGrid() {
             rel="noreferrer noopener"
             aria-label="TheYarnHook on Instagram"
             className="group relative aspect-square overflow-hidden rounded-md border border-line/60"
-            style={{ background: `linear-gradient(150deg, ${tile.palette[0]}22, #FFFDF8)` }}
           >
-            <div className="absolute inset-0 p-3 transition-transform duration-500 ease-smooth group-hover:scale-105">
-              <YarnSkein palette={tile.palette} uid={`ig-${index}`} kind={tile.kind} />
-            </div>
+            <Image
+              src={tile.image}
+              alt=""
+              fill
+              className="object-cover object-center transition-transform duration-500 ease-smooth group-hover:scale-105"
+              loading="lazy"
+            />
             <span className="absolute inset-0 grid place-items-center bg-ink/45 opacity-0 backdrop-blur-[1px] transition-opacity duration-300 group-hover:opacity-100">
               <span className="flex flex-col items-center gap-1.5 text-ivory">
                 <Instagram size={20} aria-hidden />

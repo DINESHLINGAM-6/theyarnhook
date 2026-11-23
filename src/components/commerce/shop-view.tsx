@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import type { ProductFilters, SortKey } from "@/lib/commerce/types";
@@ -10,7 +11,6 @@ import { Button } from "@/components/ui/button";
 import { Drawer } from "@/components/ui/drawer";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
-import { YarnSkein } from "@/components/art/yarn-skein";
 import { cn } from "@/lib/utils";
 import { FilterPanel } from "./filter-panel";
 import { ProductGrid } from "./product-grid";
@@ -187,8 +187,14 @@ export function ShopView({ initialQuery = "", initialFilters = {}, initialSort =
             <ProductGrid products={results} />
           ) : (
             <div className="flex flex-col items-center justify-center rounded-lg border border-dashed border-line bg-paper/60 px-6 py-16 text-center sm:py-20">
-              <div className="h-28 w-28 opacity-80">
-                <YarnSkein palette={["#D9C3A5", "#B98A5E", "#6B4A2C"]} uid="empty-shop" kind="ball" />
+              <div className="h-28 w-28 opacity-80 rounded-full overflow-hidden border border-line bg-paper">
+                <Image
+                  src="https://placehold.co/400x400/7A1F3D/FFFFFF?text=Desire+Yarn"
+                  alt=""
+                  fill
+                  className="object-cover"
+                  loading="lazy"
+                />
               </div>
               <h3 className="mt-4 font-display text-2xl tracking-tight">No yarns match that yet.</h3>
               <p className="mt-2 max-w-sm text-sm leading-relaxed text-muted">

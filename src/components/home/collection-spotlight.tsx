@@ -1,9 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { getFeaturedCollection, getProductsByCollection } from "@/lib/commerce/provider";
 import { formatINR } from "@/lib/commerce/format";
 import { ButtonLink } from "@/components/ui/button-link";
-import { YarnSkein } from "@/components/art/yarn-skein";
 import { CollectionMark } from "@/components/art/collection-mark";
 
 export function CollectionSpotlight() {
@@ -54,12 +54,13 @@ export function CollectionSpotlight() {
                 className="group rounded-lg bg-plush-tint p-2 text-plush-ink transition-transform duration-300 hover:-translate-y-0.5"
               >
                 <div className="relative aspect-square overflow-hidden rounded-md bg-plush-tint">
-                  <div className="absolute inset-0 p-1.5 transition-transform duration-500 group-hover:scale-105">
-                    <YarnSkein
-                      palette={product.media[0].palette}
-                      uid={`spotlight-${product.id}`}
-                    />
-                  </div>
+                  <Image
+                    src={product.image ?? `https://placehold.co/400x400/3A2350/FFFFFF?text=Plush+Luxe+Yarn`}
+                    alt=""
+                    fill
+                    className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
                 </div>
                 <p className="mt-2 truncate text-[11px] font-medium leading-tight">{product.name}</p>
                 <p className="text-[11px] opacity-70">{formatINR(product.price)}</p>

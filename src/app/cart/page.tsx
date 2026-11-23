@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, ArrowRight, Trash2, X } from "lucide-react";
 import { useCartStore, cartSubtotal, freeShippingRemaining } from "@/lib/store/cart";
 import { getProductById } from "@/lib/commerce/provider";
@@ -9,7 +10,6 @@ import { formatINR } from "@/lib/commerce/format";
 import { useMounted } from "@/lib/hooks/use-mounted";
 import { ButtonLink } from "@/components/ui/button-link";
 import { QuantityStepper } from "@/components/commerce/quantity-stepper";
-import { YarnSkein } from "@/components/art/yarn-skein";
 
 const SHIPPING_FLAT = 79;
 
@@ -37,8 +37,14 @@ export default function CartPage() {
   if (lines.length === 0) {
     return (
       <section className="container-x flex min-h-[60svh] flex-col items-center justify-center py-20 text-center">
-        <div className="h-32 w-32 opacity-80">
-          <YarnSkein palette={["#D9C3A5", "#B98A5E", "#6B4A2C"]} uid="empty-cart" kind="ball" />
+        <div className="h-32 w-32 opacity-80 rounded-full overflow-hidden border border-line bg-paper">
+          <Image
+            src="https://placehold.co/400x400/7A1F3D/FFFFFF?text=Desire+Yarn"
+            alt=""
+            fill
+            className="object-cover"
+            loading="lazy"
+          />
         </div>
         <p className="kicker mt-6">Your bag</p>
         <h1 className="display mt-2 text-4xl sm:text-5xl">Nothing in the bag yet.</h1>
@@ -90,7 +96,13 @@ export default function CartPage() {
                     className="relative h-20 w-20 shrink-0 overflow-hidden rounded-md border border-line/70 bg-oat/30 sm:h-24 sm:w-24"
                     aria-label={product.name}
                   >
-                    <YarnSkein palette={product.media[0].palette} uid={`cart-${product.id}-${line.colourId}`} />
+                    <Image
+                      src={product.image ?? `https://placehold.co/400x400/7A1F3D/FFFFFF?text=Desire+Yarn`}
+                      alt=""
+                      fill
+                      className="object-cover object-center"
+                      loading="lazy"
+                    />
                   </Link>
 
                   <div className="flex min-w-0 flex-1 flex-col">
