@@ -134,7 +134,7 @@ export default function AboutPage() {
         <div className="container-x py-14 sm:py-20">
           <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-center">
             <div>
-              <p className="text-[11px] font-medium tracking-wide text-[#E7C766]">Four moods</p>
+              <p className="text-[11px] font-medium tracking-wide text-brass-soft">Four moods</p>
               <h2 className="display mt-3 text-4xl sm:text-5xl">One system, four feelings.</h2>
               <p className="mt-4 max-w-md text-sm leading-relaxed text-plush-on/75">
                 Desire is wine and smoke. Milka is warm milk and camel. Souffle is apricot and

@@ -11,7 +11,7 @@ const config: Config = {
         ink: { DEFAULT: "var(--ink)", soft: "var(--ink-soft)" },
         muted: "var(--muted)",
         line: "var(--line)",
-        brass: "var(--brass)",
+        brass: { DEFAULT: "var(--brass)", soft: "var(--brass-soft)" },
         sale: "var(--sale)",
         success: { DEFAULT: "var(--success)", solid: "#2f6b4f", tint: "#E3F0EA", ink: "#1E4533", on: "#F2F9F4" },
         desire: { solid: "#7A1F3D", tint: "#F4DCE2", ink: "#4A1024", on: "#FFF6F8" },

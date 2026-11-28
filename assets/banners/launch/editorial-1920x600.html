@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TheYarnHook — Website Hero Banner (1920×600)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { width: 1920px; height: 600px; overflow: hidden; background: #F7F1E8; font-family: 'Manrope', sans-serif; color: #1A1613; }
+    .banner { position: relative; width: 1920px; height: 600px; display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; padding: 64px 120px; background: linear-gradient(125deg, #F7F1E8 0%, #EFE4D3 60%, #F4DCE2 100%); }
+    .safe-zone { z-index: 2; max-width: 780px; }
+    .kicker { font-size: 15px; font-weight: 600; letter-spacing: 0.08em; color: #7A1F3D; margin-bottom: 18px; }
+    h1 { font-family: 'Fraunces', serif; font-size: 76px; line-height: 1.02; font-weight: 400; letter-spacing: -0.02em; margin-bottom: 20px; }
+    h1 em { font-style: italic; color: #7A1F3D; }
+    p { font-size: 20px; line-height: 1.5; color: #4A423B; max-width: 560px; margin-bottom: 32px; }
+    .cta { display: inline-flex; align-items: center; gap: 12px; background: #1A1613; color: #F7F1E8; padding: 16px 32px; border-radius: 999px; font-size: 16px; font-weight: 600; text-decoration: none; }
+    .visuals { position: relative; height: 472px; display: flex; align-items: center; justify-content: flex-end; gap: 24px; }
+    .card { width: 320px; height: 420px; border-radius: 22px; overflow: hidden; box-shadow: 0 24px 50px -18px rgba(26,22,19,.25); border: 1px solid #E0D4C3; background: #FFFDF8; padding: 14px; }
+    .card img { width: 100%; height: 100%; object-fit: cover; border-radius: 14px; }
+    .card.offset { transform: translateY(28px) rotate(3deg); }
+    .card.main { transform: translateY(-16px) rotate(-3deg); }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <div class="safe-zone">
+      <div class="kicker">Small-batch yarn, dyed in India</div>
+      <h1>Yarn, but make it a <em>feeling</em>.</h1>
+      <p>Four tactile collections — Desire, Milka, Souffle &amp; Plush Luxe — spun for slow stitches and heirloom warmth.</p>
+      <span class="cta">Shop the collections →</span>
+    </div>
+    <div class="visuals">
+      <div class="card main"><img src="../../../public/images/products/yarn-starlite.webp" alt="Desire yarn" /></div>
+      <div class="card offset"><img src="../../../public/images/products/yarn-caramel.webp" alt="Milka yarn" /></div>
+    </div>
+  </div>
+</body>
+</html>

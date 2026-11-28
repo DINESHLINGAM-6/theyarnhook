@@ -1,0 +1,55 @@
+{
+  "$schema": "https://design-tokens.org/schema.json",
+  "primitive": {
+    "color": {
+      "ivory": "#F7F1E8",
+      "oat": "#EDE3D2",
+      "paper": "#FFFDF9",
+      "ink": "#1C1714",
+      "ink-soft": "#4E453E",
+      "muted": "#7A6F66",
+      "brass": "#A67C2E",
+      "brass-soft": "#E7C766",
+      "wine": "#7A1F3D",
+      "wine-tint": "#F4DCE2",
+      "wine-ink": "#4A1024",
+      "caramel": "#6B4A2C",
+      "caramel-tint": "#F3E7D6",
+      "caramel-ink": "#3A2716",
+      "apricot": "#9A4A16",
+      "apricot-tint": "#FBE3CC",
+      "apricot-ink": "#5A2A0C",
+      "plum": "#3A2350",
+      "plum-tint": "#E7DEF0",
+      "plum-ink": "#241430"
+    },
+    "font": {
+      "display": "'Fraunces', Georgia, serif",
+      "sans": "'Manrope', system-ui, sans-serif"
+    },
+    "radius": {
+      "sm": "6px",
+      "md": "12px",
+      "lg": "18px",
+      "xl": "24px",
+      "pill": "9999px"
+    }
+  },
+  "semantic": {
+    "bg-canvas": "{primitive.color.ivory}",
+    "bg-surface": "{primitive.color.paper}",
+    "bg-subtle": "{primitive.color.oat}",
+    "text-primary": "{primitive.color.ink}",
+    "text-secondary": "{primitive.color.ink-soft}",
+    "text-muted": "{primitive.color.muted}",
+    "accent-primary": "{primitive.color.brass}",
+    "accent-on-dark": "{primitive.color.brass-soft}"
+  },
+  "component": {
+    "button-primary-bg": "{semantic.accent-primary}",
+    "button-primary-fg": "{primitive.color.ivory}",
+    "card-bg": "{semantic.bg-surface}",
+    "card-radius": "{primitive.radius.lg}",
+    "header-height": "72px"
+  }
+}

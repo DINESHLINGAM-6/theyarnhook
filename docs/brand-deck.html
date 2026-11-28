@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TheYarnHook — Brand & Collection Deck</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --ivory: #F7F1E8;
+      --oat: #EFE4D3;
+      --paper: #FFFDF8;
+      --ink: #1A1613;
+      --ink-soft: #4A423B;
+      --brass: #A16207;
+      --brass-soft: #E7C766;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--ivory); color: var(--ink); font-family: 'Manrope', sans-serif; line-height: 1.5; }
+    .deck { max-width: 1120px; margin: 0 auto; padding: 48px 24px; display: flex; flex-direction: column; gap: 48px; }
+    .slide { background: var(--paper); border: 1px solid #E0D4C3; border-radius: 24px; padding: 56px; box-shadow: 0 24px 50px -24px rgba(26,22,19,0.16); }
+    .kicker { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brass); margin-bottom: 12px; }
+    h1, h2 { font-family: 'Fraunces', serif; font-weight: 400; line-height: 1.05; }
+    h1 { font-size: clamp(2.5rem, 5vw, 4.2rem); }
+    h2 { font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 20px; }
+    em { font-style: italic; color: #7A1F3D; }
+    .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin-top: 28px; }
+    .mood-card { padding: 24px; border-radius: 18px; }
+    .mood-card h3 { font-family: 'Fraunces', serif; font-size: 26px; margin-bottom: 8px; }
+    .chart-wrap { max-width: 720px; margin: 28px auto 0; }
+  </style>
+</head>
+<body>
+  <main class="deck">
+    <section class="slide">
+      <div class="kicker">Brand Strategy Deck · TheYarnHook</div>
+      <h1>Small-batch luxury yarn, <em>dyed in India</em>.</h1>
+      <p style="margin-top: 20px; max-width: 620px; color: var(--ink-soft);">
+        Built on warm ivory, Fraunces display typography, and four sensory collection worlds — engineered for tactile e-commerce conversion and WCAG AA accessibility.
+      </p>
+    </section>
+
+    <section class="slide">
+      <div class="kicker">01 · Four Collection Worlds</div>
+      <h2>Every skein starts with a mood.</h2>
+      <div class="grid-4">
+        <div class="mood-card" style="background: #F4DCE2; color: #4A1024;">
+          <h3>Desire</h3>
+          <p>Wine-dark merino &amp; silk-blend yarns. Romantic, candlelit drape.</p>
+        </div>
+        <div class="mood-card" style="background: #F3E7D6; color: #3A2716;">
+          <h3>Milka</h3>
+          <p>Milk-tea neutrals &amp; combed cotton for unhurried Sunday projects.</p>
+        </div>
+        <div class="mood-card" style="background: #FBE3CC; color: #5A2A0C;">
+          <h3>Souffle</h3>
+          <p>Airy butter &amp; peach loft built for soft gifts and weightless blankets.</p>
+        </div>
+        <div class="mood-card" style="background: #E7DEF0; color: #241430;">
+          <h3>Plush Luxe</h3>
+          <p>Midnight plum chenille with spun brass accents for heirloom pieces.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="kicker">02 · Assortment Architecture</div>
+      <h2>28 Yarns across Weights 2–7</h2>
+      <p style="color: var(--ink-soft);">Balanced across Fingering, DK, Worsted, Chunky, Super Chunky, and Jumbo gauges.</p>
+      <div class="chart-wrap">
+        <canvas id="weightChart"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    new Chart(document.getElementById('weightChart'), {
+      type: 'bar',
+      data: {
+        labels: ['2 · Fingering', '3 · Light DK', '4 · Worsted', '5 · Chunky', '6 · Super Chunky', '7 · Jumbo'],
+        datasets: [{
+          label: 'Number of Yarns in Catalogue',
+          data: [2, 7, 11, 4, 3, 1],
+          backgroundColor: ['#7A1F3D', '#6B4A2C', '#A16207', '#9A4A16', '#3A2350', '#1A1613'],
+          borderRadius: 10
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: { y: { beginAtZero: true, ticks: { stepSize: 2 } } }
+      }
+    });
+  </script>
+</body>
+</html>

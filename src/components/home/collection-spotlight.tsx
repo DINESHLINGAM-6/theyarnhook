@@ -15,7 +15,7 @@ export function CollectionSpotlight() {
     <section className="bg-plush-solid text-plush-on" aria-labelledby="spotlight-heading">
       <div className="container-x grid items-center gap-10 py-16 sm:py-24 lg:grid-cols-2 lg:gap-16">
         <div>
-          <p className="inline-flex items-center gap-2 text-[11px] font-medium tracking-wide text-[#E7C766]">
+          <p className="inline-flex items-center gap-2 text-[11px] font-medium tracking-wide text-brass-soft">
             <CollectionMark symbol={collection.symbol} className="h-4 w-4" />
             Collection spotlight
           </p>
