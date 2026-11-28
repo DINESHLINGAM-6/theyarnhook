@@ -13,6 +13,7 @@ import { useUIStore } from "@/lib/store/ui";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { productPlaceholders } from "@/lib/commerce/placeholder";
+import { Tilt3D } from "@/components/motion/tilt-3d";
 import { ColourSwatches } from "./colour-swatches";
 import { RatingStars } from "./rating-stars";
 import { Price } from "./price";
@@ -43,6 +44,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
 
   return (
     <article className={cn("group relative flex flex-col", className)}>
+      <Tilt3D intensity={6} className="rounded-xl">
       <div className="relative aspect-[3/4] overflow-hidden rounded-xl border border-line bg-paper transition-all duration-300 ease-smooth group-hover:shadow-card">
         {/* Discount badge */}
         {discount && (
@@ -81,11 +83,15 @@ export function ProductCard({ product, className }: ProductCardProps) {
             className="object-cover transition-transform duration-500 ease-smooth group-hover:scale-105"
             loading="lazy"
           />
+          <div className="absolute bottom-3 left-3 z-10 rounded-full bg-paper/95 px-2.5 py-1 text-[10px] font-semibold tabular-nums text-ink shadow-soft backdrop-blur ring-1 ring-current/10">
+            {active.code ?? active.id.toUpperCase()} · {active.name}
+          </div>
           <div className="absolute bottom-3 right-3 hidden rounded-full bg-paper/95 px-2.5 py-1 text-[10px] font-medium text-ink-soft shadow-soft backdrop-blur sm:block ring-1 ring-current/10">
             {product.colours.length} colours
           </div>
         </Link>
       </div>
+      </Tilt3D>
 
       <div className="mt-3 space-y-1">
         <span className="inline-flex items-center gap-1 text-[10px] font-bold tracking-wider text-brass uppercase">

@@ -4,6 +4,7 @@ import { ArrowDown, ArrowRight, Sparkles } from "lucide-react";
 import { collections } from "@/lib/commerce/data";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Magnetic } from "@/components/motion/magnetic";
+import { Tilt3D } from "@/components/motion/tilt-3d";
 import { StrandField } from "@/components/art/strand-field";
 
 export function Hero() {
@@ -81,7 +82,8 @@ export function Hero() {
         </div>
 
         <div className="relative z-10 animate-fade-up" style={{ animationDelay: "300ms" }}>
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-[520px]">
+          <Tilt3D intensity={7} className="group mx-auto aspect-[4/5] w-full max-w-[520px]">
+          <div className="relative h-full w-full">
             <div className="absolute left-0 top-[9%] h-[70%] w-[60%] -rotate-6 overflow-hidden rounded-[20px] border border-line/70 bg-paper p-5 shadow-lift ring-1 ring-current/10">
               {desire.image && (
                 <Image
@@ -129,6 +131,7 @@ export function Hero() {
               New: Plush Luxe
             </Link>
           </div>
+          </Tilt3D>
         </div>
       </div>
 

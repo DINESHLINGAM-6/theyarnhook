@@ -12,6 +12,7 @@ export type MediaKind = "skein" | "ball" | "texture";
 
 export interface Colour {
   id: string;
+  code?: string;
   name: string;
   hex: string;
   inStock: boolean;

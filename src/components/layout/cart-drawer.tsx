@@ -126,7 +126,7 @@ export function CartDrawer() {
                     </button>
                   </div>
                   <p className="mt-0.5 text-[11px] text-muted">
-                    {colour.name} · {product.weightLabel}
+                    {colour.code ? `${colour.code} · ` : ""}{colour.name} · {product.weightLabel}
                   </p>
                   <div className="mt-2 flex items-center justify-between gap-2">
                     <QuantityStepper

@@ -150,7 +150,12 @@ const realProductImages: Record<string, string> = {
 };
 
 function makeProduct(seed: ProductSeed): Product {
-  const palette = seed.colours.map((colour) => colour.hex);
+  const numericId = Number.parseInt(seed.id.replace(/\D/g, ""), 10) || 1;
+  const coloursWithCodes: Colour[] = seed.colours.map((colour, idx) => ({
+    ...colour,
+    code: colour.code ?? `${numericId * 100 + idx * 15 + 10} - TYH`,
+  }));
+  const palette = coloursWithCodes.map((colour) => colour.hex);
   const media: Media[] = seed.media ?? [
     { kind: "skein", palette: palette.slice(0, 3), alt: `${seed.name} yarn skein` },
     {
@@ -185,6 +190,7 @@ function makeProduct(seed: ProductSeed): Product {
             ? productPlaceholders.souffle
             : productPlaceholders["plush-luxe"]),
     ...seed,
+    colours: coloursWithCodes,
     weightLabel: weightMeta[seed.weight].label,
     media,
   };

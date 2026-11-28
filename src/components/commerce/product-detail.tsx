@@ -12,7 +12,7 @@ import { useUIStore } from "@/lib/store/ui";
 import { Accordion } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ColourSwatches } from "./colour-swatches";
+import { ShadeCodeSelector } from "./shade-code-selector";
 import { ProductGallery } from "./product-gallery";
 import { QuantityStepper } from "./quantity-stepper";
 import { RatingStars } from "./rating-stars";
@@ -116,17 +116,26 @@ export function ProductDetail({ product }: { product: Product }) {
           <p className="mt-4 max-w-prose text-sm leading-relaxed text-ink-soft">{product.description}</p>
 
           <div className="mt-6">
-            <div className="flex items-center justify-between gap-3">
+            <div className="flex flex-wrap items-center justify-between gap-2">
               <p className="text-xs font-semibold text-ink">
-                Colour: <span className="font-normal text-ink-soft">{colour.name}</span>
+                Shade Code:{" "}
+                <span className="font-semibold tabular-nums text-ink">
+                  {colour.code ?? colour.id.toUpperCase()}
+                </span>{" "}
+                <span className="font-normal text-ink-soft">· {colour.name}</span>
               </p>
-              {!colour.inStock ? <span className="text-xs text-sale">Out of stock</span> : null}
+              {!colour.inStock ? (
+                <span className="text-xs font-medium text-sale">Out of stock</span>
+              ) : (
+                <span className="text-[11px] text-muted">Pick a shade code before adding</span>
+              )}
             </div>
-            <ColourSwatches
+            <ShadeCodeSelector
               colours={product.colours}
               selectedId={colourId}
               onSelect={(item) => setColourId(item.id)}
-              size="md"
+              accentTint={collection.accent.tint}
+              accentSolid={collection.accent.solid}
               className="mt-3"
             />
           </div>
